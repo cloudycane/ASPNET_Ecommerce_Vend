@@ -1,0 +1,155 @@
+﻿@model IEnumerable<EcommerceProyecto.Models.Producto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@if(User.IsInRole(SD.Role_Seller))
+{
+    <p>
+        <a class="btn btn-primary float-end" asp-action="Create">Crear Nuevo Producto</a>
+    </p>
+}
+
+<h1>Productos</h1>
+
+
+
+@foreach(var productos in Model)
+{
+    <center>
+    <div class="row">
+       
+       <div class="card col-12 text-center rounded-2 mb-2" style="border-radius: 30px; box-shadow: 0px 10px 10px 0px">
+           <div class="row">
+                    @if (User.IsInRole(SD.Role_Seller))
+                    {
+                        <center>
+                            <a class="btn btn-secondary col-3 m-1" asp-action="Edit" asp-route-id="@productos.ProductoId">Editar</a>
+                            <a class="btn btn-dark col-3 m-1" asp-action="Details" asp-route-id="@productos.ProductoId">Detalles</a>
+                            <a class="btn btn-danger col-3 m-1" asp-action="Delete" asp-route-id="@productos.ProductoId">Eliminar</a>
+                        </center>
+                    }
+                    
+            </div>
+          
+                <div>
+                    <h2 class="m-2">"@productos.ProductoNombre"</h2>
+                    <hr />
+                </div>
+            
+            <div class="card-body">
+            <img class="img-fluid" src="@productos.URLImagen" width="320" height="180" />
+            <hr />
+            <h5>Descripción:</h5>
+            <fieldset style="border:none">@productos.Descripcion</fieldset>
+            <hr />
+            <div class="row">
+                <h5>Valoración del producto: </h5> 
+
+                @if(productos.ValoracionProducto == 0)
+                    {
+                        <h5 style="color: red">SIN VALORACIÓN</h5>
+                    }
+                    @if(productos.ValoracionProducto == 1)
+                    {
+                        <i style="color: darkgoldenrod;" class="bi bi-star-fill"></i>
+                    }
+                    @if(productos.ValoracionProducto == 2)
+                    {                       
+                            <div class="row">
+                                <center>                     
+                                    <i style="color: darkgoldenrod;" class="bi bi-star-fill"></i>
+                                    <i style="color: darkgoldenrod;" class="bi bi-star-fill"></i>
+                                </center>            
+                            </div>
+                    }
+                    @if(productos.ValoracionProducto == 3)
+                    {
+                        <div class="row">
+                            <center>
+                                <i style="color: darkgoldenrod;" class="bi bi-star-fill"></i>
+                                <i style="color: darkgoldenrod;" class="bi bi-star-fill"></i>
+                                <i style="color: darkgoldenrod;" class="bi bi-star-fill"></i>
+                            </center>
+                        </div>
+                    }
+                    @if (productos.ValoracionProducto == 4)
+                    {
+                        <div class="row">
+                            <center>
+                                <i style="color: darkgoldenrod;" class="bi bi-star-fill"></i>
+                                <i style="color: darkgoldenrod;" class="bi bi-star-fill"></i>
+                                <i style="color: darkgoldenrod;" class="bi bi-star-fill"></i>
+                                <i style="color: darkgoldenrod;" class="bi bi-star-fill"></i>
+                            </center>
+                        </div>
+                    } 
+                    @if (productos.ValoracionProducto == 5)
+                    {
+                        <div class="row">
+                            <center>
+                                <i style="color: darkgoldenrod;" class="bi bi-star-fill"></i>
+                                <i style="color: darkgoldenrod;" class="bi bi-star-fill"></i>
+                                <i style="color: darkgoldenrod;" class="bi bi-star-fill"></i>
+                                <i style="color: darkgoldenrod;" class="bi bi-star-fill"></i>
+                                <i style="color: darkgoldenrod;" class="bi bi-star-fill"></i>
+                            </center>
+                        </div>
+                    }
+                    <div>
+                        <table>
+                            <tr class="align-items-center">
+
+                                <td class="col-3">
+                                    @if (productos.ConIVA)
+                                    {
+                                        <p style="color:green">+CON IVA</p>
+                                    }
+                                    else
+                                    {
+                                        <p style="color: red">SIN IVA</p>
+                                    }
+                                </td>
+                                <td class="col-3">
+                                    @if (productos.ConDiscuento)
+                                    {
+                                        <p style="color:blue">+CON DISCUENTO</p>
+                                    }
+                                </td>
+                                <td class="col-3">
+                                    @if (productos.ConPuntos)
+                                    {
+                                        <p style="color: palevioletred">+CON PUNTOS</p>
+                                    }
+                                </td>
+                                <td class="col-3">
+                                    <div class="bg-success float-end rounded-3 m-2">
+                                        <p class="text-white m-0 p-3"><strong>@productos.PrecioProducto EUROS</strong></p>
+                                    </div> 
+                                        @if (User.IsInRole(SD.Role_Customer))
+                                        {
+                                            <div class="float-end rounded-3 m-2">
+                                                <a class="btn btn-warning m-0 p-3"><strong>Añadir al carrito +</strong></a>
+                                            </div>
+                                        }
+                                        
+                                </td>
+                            </tr>
+                        </table>
+                        
+                       
+                    </div>
+
+                    
+
+
+            </div>
+           
+            </div>
+            <div class="card-footer"><p class="text-secondary">@productos.FechaCreacion</p></div>
+
+      </div>
+      </div>
+      </center>
+}
+

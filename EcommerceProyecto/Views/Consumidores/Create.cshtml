@@ -1,0 +1,73 @@
+﻿@model EcommerceProyecto.Models.Consumidor
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Consumidor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NombreConsumidor" class="control-label"></label>
+                <input asp-for="NombreConsumidor" class="form-control" />
+                <span asp-validation-for="NombreConsumidor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApellidosConsumidor" class="control-label"></label>
+                <input asp-for="ApellidosConsumidor" class="form-control" />
+                <span asp-validation-for="ApellidosConsumidor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Direccion" class="control-label"></label>
+                <input asp-for="Direccion" class="form-control" />
+                <span asp-validation-for="Direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumTelefono" class="control-label"></label>
+                <input asp-for="NumTelefono" class="form-control" />
+                <span asp-validation-for="NumTelefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TarjetCredito" class="control-label"></label>
+                <input asp-for="TarjetCredito" class="form-control" />
+                <span asp-validation-for="TarjetCredito" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Correo_Electronico" class="control-label"></label>
+                <input asp-for="Correo_Electronico" class="form-control" />
+                <span asp-validation-for="Correo_Electronico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaNacimiento" class="control-label"></label>
+                <input asp-for="FechaNacimiento" class="form-control" />
+                <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Valoracion" class="control-label"></label>
+                <input asp-for="Valoracion" class="form-control" />
+                <span asp-validation-for="Valoracion" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="EsVerificado" /> @Html.DisplayNameFor(model => model.EsVerificado)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

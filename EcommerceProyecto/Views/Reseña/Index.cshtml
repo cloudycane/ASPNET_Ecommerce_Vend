@@ -1,0 +1,53 @@
+﻿@model IEnumerable<EcommerceProyecto.Models.Reseña>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ConsumidorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VendedorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaReseña)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConsumidorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VendedorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaReseña)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ReseñaId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ReseñaId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ReseñaId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

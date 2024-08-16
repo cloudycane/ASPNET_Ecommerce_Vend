@@ -1,0 +1,72 @@
+﻿@model IEnumerable<EcommerceProyecto.Models.Transaccion>
+
+@{
+    ViewData["Title"] = "Index";
+    ViewBag.Gasto = 0;
+    ViewBag.Puntos = 0;
+}
+
+
+<h1>Transacciones</h1>
+
+@if(User.IsInRole(SD.Role_Customer))
+{
+    <div class="row m-5">
+        <table class="table-striped">
+            <thead>
+                <tr>
+                    <td class="col-6">
+                        <h2>Gasto</h2>
+                    </td>
+                    <td class="col-6">
+                        <h2>Puntos Obtenidos</h2>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-6">
+                        <h3 class="text-danger">@ViewBag.Gasto</h3>
+                    </td>
+                    <td class="col-6">
+                        <h3 class="text-success">@ViewBag.Puntos</h3>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr />
+    <div class="bottom">
+        <center>
+            <div class="row">
+                <div class="card">
+                    <div class="card-header-pills">
+                        <h3>Datos de la Transacción Usuario</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <table>
+                                <tr>
+                                    <td class="col-6"><h4 class="float-start">Datos Personales</h4></td>
+                                    <td class="col-6"><a class="btn btn-primary float-end">Editar Datos Personales</a></td>
+                                </tr>
+                            </table>
+                            <table>
+                                <tr>
+                                    <td class="col-6">
+                                        Nombre: 
+                                    </td>
+                                    <td class="col-6">
+                                        Apellidos: 
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </center>
+    </div>
+
+}
+
